@@ -7,6 +7,7 @@ TagManager:
   - Parede
   - Normal
   - Gelo
+  - Canto
   layers:
   - Default
   - TransparentFX
