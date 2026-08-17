@@ -1,38 +1,77 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System.Collections;
 public class MovHuguinho : MonoBehaviour
 {
+    private float gridDistance = 1f;
     private Rigidbody rb;
-    private float vel = 5f;
-    private Vector3 inputDirecao;
-    
+    private bool canMove = true;
+    // Update is called once per frame
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Keyboard.current == null) return;
-        float x = 0f;
-        float z = 0f;
+        if (!canMove) return;
+        if (rb.linearVelocity.sqrMagnitude > 0.01f) return;
         
-        if (Keyboard.current.wKey.isPressed) z = 1f;
-        if (Keyboard.current.sKey.isPressed) z = -1f;
-        if (Keyboard.current.aKey.isPressed) x = -1f;
-        if (Keyboard.current.dKey.isPressed) x = 1f;
+        Vector3 dir = Vector3.zero;
         
-        inputDirecao = new Vector3(x,0f, z).normalized;
+        if (Keyboard.current.wKey.wasPressedThisFrame)
+        {
+            dir.z = 1f;
+        }
+        else if (Keyboard.current.sKey.wasPressedThisFrame)
+        {
+            dir.z = -1f;
+        }
+        else if (Keyboard.current.aKey.wasPressedThisFrame)
+        {
+            dir.x = -1f;
+        }
+        else if (Keyboard.current.dKey.wasPressedThisFrame)
+        {
+            dir.x = 1f;
+        }
+        
+        if (dir == Vector3.zero) return;
+        
+        
+        if(!Physics.Raycast(rb.position, dir, gridDistance))
+        {
+            if (Physics.Raycast(rb.position, Vector3.down, out RaycastHit hit, 1f) && hit.collider.CompareTag("Gelo"))
+            {
+                rb.AddForce(dir * 15f, ForceMode.Impulse);
+            }
+            else
+            {
+                rb.MovePosition(rb.position + dir * gridDistance);
+                rb.linearVelocity = Vector3.zero;
+            }
+        }
+    
     }
-    void FixedUpdate()
+    void OnTriggerStay(Collider other)
     {
-        MoverHuguinho();
+        if(other.CompareTag("Canto") && rb.linearVelocity.sqrMagnitude < 0.01f)
+        {
+            rb.transform.position = other.transform.position;
+            rb.linearVelocity = Vector3.zero;
+
+            if (canMove)
+            {
+                StartCoroutine(Cd());
+            }
+        }
     }
-    private void MoverHuguinho()
+    IEnumerator Cd()
     {
-        Vector3 movimento = new Vector3(inputDirecao.x, 0f, inputDirecao.z);
-        rb.linearVelocity = new Vector3(movimento.x * vel, rb.linearVelocity.y, movimento.z * vel);
+        canMove = false;
+        yield return new WaitForSeconds(0.5f);
+        canMove = true;
     }
+    
 }
