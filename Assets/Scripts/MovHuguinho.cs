@@ -6,6 +6,7 @@ public class MovHuguinho : MonoBehaviour
     private float gridDistance = 1f;
     private Rigidbody rb;
     private bool canMove = true;
+    private bool fit = false;
     // Update is called once per frame
     void Start()
     {
@@ -15,7 +16,7 @@ public class MovHuguinho : MonoBehaviour
     void Update()
     {
         if (Keyboard.current == null) return;
-        if (!canMove) return;
+        if (canMove == false) return;
         if (rb.linearVelocity.sqrMagnitude > 0.01f) return;
         
         Vector3 dir = Vector3.zero;
@@ -58,13 +59,21 @@ public class MovHuguinho : MonoBehaviour
     {
         if(other.CompareTag("Canto") && rb.linearVelocity.sqrMagnitude < 0.01f)
         {
+            if (fit) return;
             rb.transform.position = other.transform.position;
             rb.linearVelocity = Vector3.zero;
-
+            fit = true;
             if (canMove)
             {
                 StartCoroutine(Cd());
             }
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Canto"))
+        {
+            fit = false;
         }
     }
     IEnumerator Cd()
