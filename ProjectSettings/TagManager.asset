@@ -8,6 +8,8 @@ TagManager:
   - Normal
   - Gelo
   - Canto
+  - Void
+  - restart
   layers:
   - Default
   - TransparentFX

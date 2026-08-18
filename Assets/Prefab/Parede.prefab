@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1453560416836322452}
   - component: {fileID: 5609572744917558585}
   - component: {fileID: 2771215682777503749}
-  - component: {fileID: 1948110301769843274}
+  - component: {fileID: -1260924157631139080}
   m_Layer: 0
   m_Name: Parede
   m_TagString: Parede
@@ -91,7 +91,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1948110301769843274
+--- !u!65 &-1260924157631139080
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 218493889056495668}
   m_Layer: 0
   m_Name: Canto
-  m_TagString: Untagged
+  m_TagString: Canto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,8 @@ MeshRenderer:
   m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

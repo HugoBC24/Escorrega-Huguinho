@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class MovHuguinho : MonoBehaviour
 {
     private float gridDistance = 1f;
@@ -9,12 +10,16 @@ public class MovHuguinho : MonoBehaviour
     private bool fit = false;
     // Update is called once per frame
     void Start()
-    {
+    {  
         rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
     void Update()
     {
+        if(Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         if (Keyboard.current == null) return;
         if (canMove == false) return;
         if (rb.linearVelocity.sqrMagnitude > 0.01f) return;
@@ -67,6 +72,18 @@ public class MovHuguinho : MonoBehaviour
             {
                 StartCoroutine(Cd());
             }
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Void"))
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.transform.position = other.transform.position;
+        }
+        if(other.CompareTag("restart"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     void OnTriggerExit(Collider other)
