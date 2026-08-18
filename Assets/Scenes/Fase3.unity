@@ -6927,7 +6927,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 63.7
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6953,13 +6953,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962138143}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36406413, y: 0, z: 0, w: 0.9313739}
-  m_LocalPosition: {x: 0, y: 5, z: -3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -3, y: 13, z: -3.45}
+  m_LocalScale: {x: 0.9, y: 0.95401, z: 0.94599015}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1641335852}
-  m_LocalEulerAnglesHint: {x: 42.7, y: 0, z: 0}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &962138147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11758,11 +11758,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 638670535873513074, guid: 07915f56cbdb3164db39b69a8e9f97e0, type: 3}
   m_PrefabInstance: {fileID: 1727563270}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1641335852 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1137741240612336318, guid: 203a25c1967b3364192a70e6a48c08b1, type: 3}
-  m_PrefabInstance: {fileID: 5089187209687124190}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1641432085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1460097486045740417, guid: 968362eae52fad2489f17a507861c1e8, type: 3}
@@ -15637,10 +15632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1137741240612336318, guid: 203a25c1967b3364192a70e6a48c08b1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 962138146}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 203a25c1967b3364192a70e6a48c08b1, type: 3}
 --- !u!1001 &6607345873465518843
@@ -15729,6 +15721,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1992815385}
+  - {fileID: 962138146}
   - {fileID: 1878116108}
   - {fileID: 5089187209687124190}
   - {fileID: 6607345873465518843}
